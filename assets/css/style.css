@@ -1,0 +1,153 @@
+/* Dükkanoğlu Taşımacılık – statik site stilleri */
+:root {
+  --brand: #c8102e;
+  --brand-dark: #9d0c24;
+  --ink: #1d2733;
+  --muted: #5d6b7a;
+  --bg: #ffffff;
+  --bg-soft: #f4f6f8;
+  --line: #e2e7ec;
+  --radius: 12px;
+  --shadow: 0 6px 24px rgba(20, 30, 45, 0.08);
+  --max: 1140px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--brand); text-decoration: none; }
+a:hover { color: var(--brand-dark); }
+.container { width: min(100% - 2rem, var(--max)); margin-inline: auto; }
+
+/* Üst bar */
+.topbar { background: var(--ink); color: #fff; font-size: .9rem; }
+.topbar .container { display: flex; justify-content: flex-end; padding-block: .45rem; }
+.topbar a { color: #fff; font-weight: 600; }
+
+/* Header */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(255, 255, 255, .96);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.site-header .container { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: .7rem; }
+.logo img { height: 52px; width: auto; }
+.nav-toggle {
+  display: none; background: none; border: 1px solid var(--line); border-radius: 8px;
+  padding: .5rem .7rem; font-size: 1rem; cursor: pointer; color: var(--ink);
+}
+.nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: .25rem; flex-wrap: wrap; }
+.nav a {
+  display: block; padding: .5rem .8rem; border-radius: 8px;
+  color: var(--ink); font-weight: 600; font-size: .86rem; letter-spacing: .02em; text-transform: uppercase;
+}
+.nav a:hover { background: var(--bg-soft); color: var(--brand); }
+.nav a[aria-current="page"] { color: #fff; background: var(--brand); }
+
+/* Hero / slider */
+.hero { position: relative; overflow: hidden; background: #111; }
+.slides { position: relative; aspect-ratio: 16 / 6; min-height: 260px; }
+.slide { position: absolute; inset: 0; opacity: 0; transition: opacity .9s ease; }
+.slide.active { opacity: 1; }
+.slide img { width: 100%; height: 100%; object-fit: cover; }
+.slider-dots { position: absolute; bottom: 14px; left: 0; right: 0; display: flex; justify-content: center; gap: 8px; }
+.slider-dots button {
+  width: 10px; height: 10px; border-radius: 50%; border: 0; padding: 0; cursor: pointer;
+  background: rgba(255, 255, 255, .5);
+}
+.slider-dots button.active { background: #fff; }
+
+/* Bölümler */
+section { padding-block: 3.5rem; }
+.section-soft { background: var(--bg-soft); }
+h1, h2, h3 { line-height: 1.25; margin: 0 0 .6rem; }
+h1 { font-size: clamp(1.8rem, 3vw, 2.4rem); }
+h2 { font-size: clamp(1.4rem, 2.4vw, 1.9rem); }
+h3 { font-size: 1.15rem; }
+.lead { color: var(--muted); font-size: 1.05rem; max-width: 62ch; }
+
+.page-title { background: var(--bg-soft); border-bottom: 1px solid var(--line); padding-block: 2rem; }
+.breadcrumb { font-size: .88rem; color: var(--muted); margin-top: .3rem; }
+.breadcrumb a { color: var(--muted); }
+
+/* Hizmet kartları */
+.cards { display: grid; gap: 1.2rem; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+.card {
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 1.5rem; box-shadow: var(--shadow); transition: transform .2s ease;
+}
+.card:hover { transform: translateY(-3px); }
+.card h3 { color: var(--brand); }
+.card p { margin: 0; color: var(--muted); }
+
+/* Duyuru bandı */
+.notice { display: grid; gap: 2rem; grid-template-columns: 1fr; align-items: start; }
+@media (min-width: 860px) { .notice { grid-template-columns: 1.1fr 1fr; } }
+
+/* Galeri */
+.gallery { display: grid; gap: .7rem; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+.gallery a { display: block; border-radius: 10px; overflow: hidden; background: var(--bg-soft); aspect-ratio: 4 / 3; }
+.gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s ease; }
+.gallery a:hover img { transform: scale(1.06); }
+
+/* Listeler */
+.check-list { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: .5rem; }
+.check-list li { padding: .7rem 1rem .7rem 2.4rem; background: #fff; border: 1px solid var(--line); border-radius: 10px; position: relative; }
+.check-list li::before { content: "✓"; position: absolute; left: .9rem; color: var(--brand); font-weight: 700; }
+.check-list a { font-weight: 600; }
+
+.prose { max-width: 72ch; }
+.prose p { margin: 0 0 1rem; }
+
+/* İletişim */
+.contact-grid { display: grid; gap: 1.2rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.contact-grid .card h3 { margin-bottom: .4rem; }
+.contact-grid p { margin: 0 0 .3rem; }
+.map { margin-top: 1.5rem; border: 0; width: 100%; height: 360px; border-radius: var(--radius); }
+
+.btn {
+  display: inline-block; background: var(--brand); color: #fff; padding: .75rem 1.4rem;
+  border-radius: 999px; font-weight: 600;
+}
+.btn:hover { background: var(--brand-dark); color: #fff; }
+
+/* Footer */
+.site-footer { background: var(--ink); color: #c9d2dc; padding-block: 2rem; font-size: .9rem; }
+.site-footer .container { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .6rem; }
+.site-footer a { color: #fff; }
+
+/* Lightbox */
+.lightbox {
+  position: fixed; inset: 0; z-index: 100; background: rgba(0, 0, 0, .9);
+  display: none; align-items: center; justify-content: center; padding: 1rem;
+}
+.lightbox.open { display: flex; }
+.lightbox img { max-height: 90vh; max-width: 92vw; border-radius: 6px; }
+.lightbox button {
+  position: absolute; background: rgba(255, 255, 255, .15); color: #fff; border: 0;
+  width: 44px; height: 44px; border-radius: 50%; font-size: 1.4rem; cursor: pointer;
+}
+.lightbox .lb-close { top: 16px; right: 16px; }
+.lightbox .lb-prev { left: 16px; top: 50%; }
+.lightbox .lb-next { right: 16px; top: 50%; }
+
+/* Mobil */
+@media (max-width: 900px) {
+  .nav-toggle { display: block; }
+  .nav { display: none; position: absolute; left: 0; right: 0; top: 100%; background: #fff; border-bottom: 1px solid var(--line); }
+  .nav.open { display: block; }
+  .nav ul { flex-direction: column; padding: .6rem 1rem 1rem; }
+  .slides { aspect-ratio: 16 / 9; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+}
