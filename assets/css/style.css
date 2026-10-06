@@ -45,10 +45,10 @@ a:hover { color: var(--brand-dark); }
   display: none; background: none; border: 1px solid var(--line); border-radius: 8px;
   padding: .5rem .7rem; font-size: 1rem; cursor: pointer; color: var(--ink);
 }
-.nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: .25rem; flex-wrap: wrap; }
+.nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: .1rem; flex-wrap: nowrap; }
 .nav a {
-  display: block; padding: .5rem .8rem; border-radius: 8px;
-  color: var(--ink); font-weight: 600; font-size: .86rem; letter-spacing: .02em; text-transform: uppercase;
+  display: block; padding: .5rem .6rem; border-radius: 8px; white-space: nowrap;
+  color: var(--ink); font-weight: 600; font-size: .8rem; letter-spacing: 0; text-transform: uppercase;
 }
 .nav a:hover { background: var(--bg-soft); color: var(--brand); }
 .nav a[aria-current="page"] { color: #fff; background: var(--brand); }
@@ -141,7 +141,7 @@ h3 { font-size: 1.15rem; }
 .lightbox .lb-next { right: 16px; top: 50%; }
 
 /* Mobil */
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .nav-toggle { display: block; }
   .nav { display: none; position: absolute; left: 0; right: 0; top: 100%; background: #fff; border-bottom: 1px solid var(--line); }
   .nav.open { display: block; }
